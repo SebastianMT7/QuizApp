@@ -9,10 +9,10 @@ let questions = [
     },
     {
         'question': 'Mit welchem Tag bindet man einen Link ein?',
-        'answer_1': '<span>',
-        'answer_2': '<a href>',
-        'answer_3': '<img>',
-        'answer_4': '<p>',
+        'answer_1': 'span',
+        'answer_2': 'a href',
+        'answer_3': 'img',
+        'answer_4': 'p',
         'right_answer': 2,
     },
     {
@@ -49,24 +49,50 @@ function init() {
 }
 
 function showCurrentQuestion() {
-    let question = questions[currentQuestion];
-    document.getElementById('questionText').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+
+    if (currentQuestion >= questions.length) {
+        //End Screen(muss noch gemacht werden!)
+    } else {
+        let question = questions[currentQuestion];
+        document.getElementById('current-question').innerHTML = currentQuestion + 1;
+        document.getElementById('questionText').innerHTML = question['question'];
+        document.getElementById('answer_1').innerHTML = question['answer_1'];
+        document.getElementById('answer_2').innerHTML = question['answer_2'];
+        document.getElementById('answer_3').innerHTML = question['answer_3'];
+        document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
 
 function answer(selection) {
     let question = questions[currentQuestion];
-    console.log('selected answer is', selection);
     let selectetQuestionNumber = selection.slice(-1); //nimmt den letzten Buchstaben aus dem string(von der var answer_3 die 3. answer_3 wird durch onclick mit gegeben!!)
-    console.log('selectedQuestionNumber is', selectetQuestionNumber);
-    console.log('Current question is', question['right_answer']);
-   
+
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
+
     if (selectetQuestionNumber == question['right_answer']) {
-       console.log('Richitg');
+        document.getElementById(selection).parentNode.classList.add('bg-success');//mit .parentNode wählt man das übergeordnete Element aus (zB die div in dem nav tag)
     } else {
-        console.log('Falsch');
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
+    document.getElementById('next-button').disabled = false;
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    document.getElementById('next-button').disabled = true;
+    resetAnswerButtons();
+    showCurrentQuestion();
+
+}
+
+function resetAnswerButtons() {
+    document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
