@@ -40,6 +40,7 @@ let questions = [
         'right_answer': 4,
     },
 ];
+let rightAnswer = 0;
 
 let currentQuestion = 0;
 
@@ -52,6 +53,10 @@ function showCurrentQuestion() {
 
     if (currentQuestion >= questions.length) {
         //End Screen(muss noch gemacht werden!)
+        document.getElementById('endScreen').style = '';
+        document.getElementById('questionBody').style = 'display: none';
+        document.getElementById('right-answers').innerHTML = rightAnswer;
+        document.getElementById('all-questions-endCard').innerHTML = questions.length;
     } else {
         let question = questions[currentQuestion];
         document.getElementById('current-question').innerHTML = currentQuestion + 1;
@@ -71,6 +76,7 @@ function answer(selection) {
 
     if (selectetQuestionNumber == question['right_answer']) {
         document.getElementById(selection).parentNode.classList.add('bg-success');//mit .parentNode wählt man das übergeordnete Element aus (zB die div in dem nav tag)
+        rightAnswer ++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');

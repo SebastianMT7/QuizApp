@@ -31,7 +31,18 @@
                 </div>
             </div>
 
-            <div class="card-body card-right">
+            <div class="card-body card-right" id="endScreen" style="display: none;">
+
+                <div class="endCard">
+                    <div><img src="./img/brain result.png" alt="resultimg"></div>
+                    
+                    <div>Complete Quiz</div>
+                    <div>Your Score</div> <div><b id="right-answers"></b><b>/</b><b id="all-questions-endCard"></b></div>
+                    <button>Replay</button>
+                </div>
+            </div>
+
+            <div class="card-body card-right" id="questionBody">
                 <h5 class="card-title" id="questionText"></h5>
 
                 <div class="card mb-2 quiz-answer-card" onclick="answer('answer_1')">
@@ -43,7 +54,7 @@
                     </div>
                 </div>
                 <div class="card mb-2 quiz-answer-card" onclick="answer('answer_3')">
-                    <div class="card-body"  id="answer_3">
+                    <div class="card-body" id="answer_3">
                     </div>
                 </div>
                 <div class="card mb-2 quiz-answer-card" onclick="answer('answer_4')">
@@ -53,9 +64,10 @@
 
                 <div class="question-footer">
                     <span>
-                        <b id="current-question">1</b> von <b id="all-questions"></b> Fragen
+                        <b id="current-question"></b> von <b id="all-questions"></b> Fragen
                     </span>
-                    <button class="btn btn-primary" id="next-button" disabled onclick="nextQuestion()">Nächste Frage</button>
+                    <button class="btn btn-primary" id="next-button" disabled onclick="nextQuestion()">Nächste
+                        Frage</button>
                 </div>
 
             </div>
