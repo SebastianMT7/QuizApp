@@ -13,12 +13,12 @@ body {
     flex-direction: column;
 }
 
-.progress{
+.progress {
     width: 40rem;
     --bs-progress-bar-bg: rgb(38, 34, 98) !important;
-    background-color:#64283A !important;
-    border-bottom-right-radius: 0!important;
-    border-bottom-left-radius: 0!important;
+    background-color: #64283A !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
 }
 
 .quiz-card {
@@ -47,6 +47,11 @@ body {
     border-top-left-radius: 0 !important;
 }
 
+.card-left p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .card-left img {
     height: 65px;
     width: 65px;
@@ -56,6 +61,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .question-footer {
@@ -71,14 +77,87 @@ body {
 
 .quiz-answer-card:hover {
     cursor: pointer;
-    background-color:rgba(0, 0, 0, 0.05) !important; 
+    background-color: rgba(0, 0, 0, 0.05) !important;
 }
 
-.bg-success, .bg-danger {
-    color: white !important; 
+.bg-success,
+.bg-danger {
+    color: white !important;
 }
 
 .endCard {
     display: flex;
-    justify-content: center !important;
+    align-items: center;
+    flex-direction: column;
+}
+
+.endCard img {
+    height: 120px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.score {
+    display: flex;
+    padding: 20px 0;
+}
+
+.score span {
+    padding-right: 20px;
+    color: rgb(38, 34, 98) !important;
+    font-weight: bold;
+}
+
+.btn-endCard-order {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 650px) {
+    .main-card {
+        flex-direction: column !important;
+        width: 30rem;
+    }
+
+    .progress {
+        width: 30rem;
+    }
+
+    .card-left {
+        width: 30rem;
+        align-items: center;
+        padding-top: 20px;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .card-right {
+        border-bottom-left-radius: 0.375rem !important;
+    }
+
+    .card-order {
+        flex-direction: row;
+        margin: 0;
+        align-items: flex-start !important;
+        gap: 50px;
+    }
+
+    .card-order p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-card {
+        width: 19rem;
+    }
+
+    .progress {
+        width: 19rem;
+    }
+
+    .card-left {
+        width: 19rem;
+    }
+
 }
